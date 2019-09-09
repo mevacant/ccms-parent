@@ -37,6 +37,7 @@
 			//alert(JSON.stringify(res));
 			if(res != null && "1" == res.success){
 			    //兑换成功
+                window.location.href='/pages/addrForm';
 			}else{
 			    //兑换失败
                 $("#codeInput").val("");

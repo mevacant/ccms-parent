@@ -59,6 +59,17 @@ public class PageController {
         return "/voucher/index";
     }
 
+    @RequestMapping(value = "/addrForm")
+    public String addrForm(ModelMap model) {
+//        List<EcPageTempleteProperty> list = ecPageTempletePropertyMapper.selelctEnablePageTempletePropertyList();
+//        for(EcPageTempleteProperty p : list){
+//            model.addAttribute(p.getName(),p.getValue());
+//        }
+
+
+        return "/voucher/addr_form";
+    }
+
 
 
 }
