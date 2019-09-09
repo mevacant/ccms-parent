@@ -36,7 +36,7 @@ public class PageController {
         model.addAttribute("htmlText", "<span style=\"color: red;font-size: 16px;\">html内容</span>");
         model.addAttribute("num", 123.012);
         model.addAttribute("null", null);
-        model.addAttribute("dateObj", new Date());
+        model.addAttribute("dateObj", new Date()); 
         model.addAttribute("bol", true);
         return "/test/index";
     }
