@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccms.mapper.EcVoucherLogMapper">
+  <resultMap id="BaseResultMap" type="com.ccms.entity.EcVoucherLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="main_id" jdbcType="BIGINT" property="mainId" />
+    <result column="check_result" jdbcType="VARCHAR" property="checkResult" />
+    <result column="error_msg" jdbcType="VARCHAR" property="errorMsg" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+</mapper>

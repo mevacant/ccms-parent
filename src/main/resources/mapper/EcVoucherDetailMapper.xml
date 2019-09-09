@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccms.mapper.EcVoucherDetailMapper">
+  <resultMap id="BaseResultMap" type="com.ccms.entity.EcVoucherDetail">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="year" jdbcType="VARCHAR" property="year" />
+    <result column="main_id" jdbcType="BIGINT" property="mainId" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="get_time" jdbcType="TIMESTAMP" property="getTime" />
+    <result column="get_type" jdbcType="VARCHAR" property="getType" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  
+  <select id="selectSimpleColumnByCode" resultType="map" parameterType="string">
+    select m.batch_id as batchId,d.code,m.voucher_type as voucherType
+    from ec_voucher_detail d
+           left join ec_voucher_main m on m.id = d.main_id
+    where d.code = #{code}
+  </select>
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccms.mapper.EcsuserUserAddrsMapper">
+  <resultMap id="BaseResultMap" type="com.ccms.entity.EcsuserUserAddrs">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="addr_id" jdbcType="INTEGER" property="addrId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="addr" jdbcType="VARCHAR" property="addr" />
+    <result column="zip" jdbcType="VARCHAR" property="zip" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="def_addr" jdbcType="BIT" property="defAddr" />
+    <result column="person_id" jdbcType="VARCHAR" property="personId" />
+    <result column="person_id_card" jdbcType="VARCHAR" property="personIdCard" />
+    <result column="is_real_name" jdbcType="BIT" property="isRealName" />
+  </resultMap>
+
+  <select id="selectAddrByCode" resultMap="BaseResultMap" parameterType="String">
+    select * from `ecsuser_user_addrs` a
+    left join `ec_voucher_address` va on a.addr_id = va.addr_id
+    left join `ec_voucher_detail` vd on vd.voucher_code = va.voucher_code
+    where vd.code = #{code}
+  </select>
+</mapper>

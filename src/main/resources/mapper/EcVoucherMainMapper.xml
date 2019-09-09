@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccms.mapper.EcVoucherMainMapper">
+  <resultMap id="BaseResultMap" type="com.ccms.entity.EcVoucherMain">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="year" jdbcType="VARCHAR" property="year" />
+    <result column="batch_id" jdbcType="VARCHAR" property="batchId" />
+    <result column="voucher_type" jdbcType="VARCHAR" property="voucherType" />
+    <result column="code_type" jdbcType="VARCHAR" property="codeType" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="code_total" jdbcType="VARCHAR" property="codeTotal" />
+    <result column="channel_name" jdbcType="VARCHAR" property="channelName" />
+    <result column="channel_code" jdbcType="VARCHAR" property="channelCode" />
+    <result column="batch_status" jdbcType="VARCHAR" property="batchStatus" />
+    <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="exchange_type" jdbcType="VARCHAR" property="exchangeType" />
+    <result column="exchange_id" jdbcType="BIGINT" property="exchangeId" />
+    <result column="exchange_val" jdbcType="VARCHAR" property="exchangeVal" />
+    <result column="exchange_remark" jdbcType="VARCHAR" property="exchangeRemark" />
+    <result column="package_code" jdbcType="VARCHAR" property="packageId" />
+    <result column="package_name" jdbcType="VARCHAR" property="packageName" />
+    <result column="package_allowcount" jdbcType="INTEGER" property="packageAllowcount" />
+    <result column="each_allowcount" jdbcType="INTEGER" property="eachAllowcount" />
+    <result column="package_usecount" jdbcType="INTEGER" property="packageUsecount" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+</mapper>
