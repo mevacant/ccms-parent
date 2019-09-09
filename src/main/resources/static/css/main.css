@@ -1,0 +1,51 @@
+.clear-padding{
+    padding-left:0;
+    padding-right:0;
+}
+.clear-padding-row > div{
+    /*padding-left:0;
+    padding-right:0;*/
+}
+.clear-padding-col{
+    padding-top:0;
+    padding-bottom:0;
+}
+.header{
+	z-index:999;
+	width:100%;
+	height:40px;
+	position:fixed;top:0;
+	text-align:center;
+	background:#fff;
+	line-height:40px;
+
+}
+
+
+.header-left{
+	font-size: 18px;
+	padding-top: 9px;
+	height: 100%;
+
+}
+
+.header-center{
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.header > .right{
+	
+}
+
+/*模块框*/
+.modal-dialog{
+	top:150px;
+}
+
+.orange-btn{
+	border-radius:36px;
+	padding:8px 100px;
+	background:rgb(241, 137, 96);
+	color:fff;
+}

@@ -50,22 +50,11 @@ public class PageController {
 
     @RequestMapping(value = "/index")
     public String index(ModelMap model) {
-        List<EcPageTempleteProperty> list = ecPageTempletePropertyMapper.selelctEnablePageTempletePropertyList();
-        for(EcPageTempleteProperty p : list){
-            model.addAttribute(p.getName(),p.getValue());
-        }
+//        List<EcPageTempleteProperty> list = ecPageTempletePropertyMapper.selelctEnablePageTempletePropertyList();
+//        for(EcPageTempleteProperty p : list){
+//            model.addAttribute(p.getName(),p.getValue());
+//        }
 
-
-//        new RestTemplate().getMessageConverters().get(0).
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CONTENT_TYPE, "multipart/form-data");
-        MultiValueMap<String, Object> param = new LinkedMultiValueMap<>();
-        param.add("test",1);
-
-        HttpEntity entity = new HttpEntity(param, headers);
-
-        RestTemplate rest = new RestTemplate();
-        String res = rest.postForObject("http://127.0.0.1:8003", entity, String.class);
 
         return "/voucher/index";
     }
