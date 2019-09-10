@@ -1,17 +1,10 @@
 package com.ccms.controller;
 
-import com.ccms.entity.EcPageTempleteProperty;
 import com.ccms.mapper.EcPageTempletePropertyMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import java.util.*;

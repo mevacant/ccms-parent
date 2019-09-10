@@ -18,7 +18,7 @@ public class EcPageTempleteProperty {
     /**
      * 属性key
      */
-    private String name;
+    private String type;
 
     /**
      * 属性value
@@ -66,19 +66,19 @@ public class EcPageTempleteProperty {
     /**
      * 获取属性key
      *
-     * @return name - 属性key
+     * @return type - 属性key
      */
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
     /**
      * 设置属性key
      *
-     * @param name 属性key
+     * @param type 属性key
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setType(String type) {
+        this.type = type;
     }
 
     /**
