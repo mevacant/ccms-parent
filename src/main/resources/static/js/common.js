@@ -16,7 +16,12 @@ $.fn.serializeObject = function() {
 
 function showError(dom,msg){
     dom.css("visibility","visible");
-    dom.text(msg)
+    if(msg){
+        dom.text(msg);
+    }else{
+        dom.text("未知错误");
+    }
+
 }
 
 // function invoke(path,param,callback){
