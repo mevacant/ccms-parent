@@ -15,9 +15,9 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		//alert($("#codeInput").offset().top);
-		// var height = $("#index1img").height();
-		// console.log(height);
-		// $("#formBox").css("margin-top",height-40);
+		var height = $("#index1img").height();
+		console.log(height);
+		$("#formBox").css("margin-top",height-40);
 	});
 
 	//var code = "A2019010110123"
@@ -57,39 +57,27 @@
 
 <div class="container-fluid" style="">
 	<div class="row" style="">
-		<div class="col-xs-12 col-md-offset-4 col-md-4" style="background:#DDDED5;text-align:center;padding-top:30px;padding-bottom: 50px;">
-			<div id="whiteBox" style="background:#fff;padding:17px;">
-				<img id="index1img" width="100%" class="center-block" src="/img/voucher/index1-1.png"/>
-				<div style="position:absolute;top:67px;left:0;right:0;margin: auto;">
-                    <img id="index1img" width="100%" class="center-block" src="/img/voucher/index1-2.png"/>
+		<div class="col-xs-12 col-md-offset-4 col-md-4" style="background:#DDDED5;text-align:center;padding-top:50px;padding-bottom: 50px;">
+			<div id="whiteBox" style="background:#fff;padding-bottom: 10px;">
+				<div style="position:absolute;top:17px;left:0;right:0;margin: auto;">
+					<img id="index1img" width="100%" class="center-block" src="/img/voucher/index1.png"/>
 				</div>
-                <div id="formBox" style="margin-top: 30px;font-size: 16px;">
+                <br/>
+                <div id="formBox" style="margin-top: 350px;font-size: 16px;">
                     <form class="form-horizontal" style="">
-                        <#--<div class="form-group" style="margin-bottom:0;">-->
-                            <#--<label style="" for="codeInput" class="col-xs-4 control-label">券码</label>-->
-                            <#--<div class="col-xs-8">-->
+                        <div class="form-group" style="margin-bottom:0;">
+                            <#--<label for="codeInput" class="control-label">券码</label>-->
+                            <#--<input style="width:150px;" type="text" class="form-control" id="codeInput" name="code" placeholder="">-->
 
-                                <#--<input style="width:150px;" type="text" class="form-control line-input" id="codeInput" name="code" placeholder="">-->
-                            <#--</div>-->
-                        <#--</div>-->
-						<div class="row">
-							<div class="col-xs-4" style="text-align: right;font-size: 16px;font-weight: bold;line-height: 40px;">券码</div>
-							<div class="col-xs-8" style="text-align: left">
-								<input style="width:150px;height: 40px;background: transparent;" type="text" class="line-input" id="codeInput" name="code" placeholder="请输入13位券码">
-							</div>
-						</div>
-
-						<div class="row" style="margin:10px 0;">
-							<div class="col-xs-4"></div>
-							<div class="col-xs-8" style="text-align: left">
-							<span id="errorDom" class="errorSpan" >错误提示
-							</span>
-							</div>
-						</div>
-
+                            <label style="" for="codeInput" class="col-xs-4 control-label">券码</label>
+                            <div class="col-xs-8">
+                                <input style="width:150px;" type="text" class="form-control" id="codeInput" name="code" placeholder="">
+                            </div>
+                        </div>
+                        <p id="errorDom" class="bg-danger" style="color:red;font-size:12px;margin:5px 0;visibility:hidden;">错误提示</p>
 						<div style="position:relative;">
                             <div style="position:absolute;top:0;left:0;right:0;margin: auto;">
-                                <button style="" class="btn-no-border orange-btn-big"  type="button" onclick="useCode();"></button>
+                                <button style="" class="btn btn-default orange-btn"  type="button" onclick="useCode();">兑换礼品</button>
                             </div>
 						</div>
 
@@ -100,7 +88,7 @@
 	</div>
 </div>
 
-<div class="" style="z-index:999;position:fixed;right:0;top:227px;text-align:center;line-height:12px;color:fff;width:82px;">
+<div class="" style="z-index:999;position:fixed;right:0;top:227px;text-align:center;line-height:12px;color:fff;width:62pt;">
 	<#--<div>查询</div>-->
 	<#--<div>礼物</div>-->
 	<img width="100%" src="/img/voucher/fix_btn.png">
@@ -108,7 +96,7 @@
 
 <br/>
 <div style="width:100%;text-align:center;margin-top: 20px;">
-	<p style="font-size:17px;"><strong>礼品展示</strong></p>
+	<p style="font-size:17px;">- 礼品展示 - </p>
 </div>
 
 <div class="container-fluid" style="">

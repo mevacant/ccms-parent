@@ -124,7 +124,7 @@ public class VoucherController {
     @PostMapping("/saveAddress")
     public AppRspObject saveAddress(@RequestBody EcsuserUserAddrsVo addrObj){
         AppRspObject result = null;
-        String code = addrObj.getCode();
+         String code = addrObj.getCode();
         for(;;) {
             result = voucherService.checkCodeValid(code);
             if (Errors.RESPONSE_ERROR.equals(result.getSuccess())) {

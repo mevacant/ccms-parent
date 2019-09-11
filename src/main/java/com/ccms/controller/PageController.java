@@ -53,14 +53,26 @@ public class PageController {
     }
 
     @RequestMapping(value = "/addrForm")
-    public String addrForm(ModelMap model) {
+    public String addrForm(ModelMap model, String code) {
 //        List<EcPageTempleteProperty> list = ecPageTempletePropertyMapper.selelctEnablePageTempletePropertyList();
 //        for(EcPageTempleteProperty p : list){
 //            model.addAttribute(p.getName(),p.getValue());
 //        }
 
-
+        model.addAttribute("code",code);
         return "/voucher/addr_form";
+    }
+
+    @RequestMapping(value = "/queryGift")
+    public String queryGift(ModelMap model, String code) {
+
+        return "/voucher/query";
+    }
+
+    @RequestMapping(value = "/showAddr")
+    public String showAddr(ModelMap model, String code) {
+
+        return "/voucher/show_addr";
     }
 
 

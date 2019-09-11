@@ -29,15 +29,20 @@ function showError(dom,msg){
 // }
 
 
-function invoke(path,param,callback){
+function invoke(path,param,callback,contentType){
     var serverUrl = "http://127.0.0.1:8003";
     var url = serverUrl + path
-    console.log("request url:%s, param:%s",url,param);
+    if("json" == contentType){
+        contentType = "application/json; charset=utf-8";
+        param = JSON.stringify(param);
+    }else {
+        contentType = "application/x-www-form-urlencoded; charset=utf-8"
+    }
+    console.log("request url:%s, param:%s",url,JSON.stringify(param));
 
-    console.log("request url:%s,param:%s",serverUrl+url,JSON.stringify(param));
     $.ajax({
         url: url, 
-        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        contentType: contentType,
         dataType: "json",
         type:"post",
         data: param,
@@ -50,8 +55,13 @@ function invoke(path,param,callback){
             alert("请求失败，稍后再试");
         },
         complete: function (res) {
-            console.log("reponse url:%s,res:%s",serverUrl+url,JSON.stringify(res));
+            console.log("reponse url:%s,res:%s",url,JSON.stringify(res));
         }
 
     });
+}
+
+function pageBack() {
+    //window.history.back(-1);
+    window.location.go(-1);
 }
