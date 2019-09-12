@@ -15,6 +15,7 @@ import com.ccms.service.VoucherService;
 import com.ccms.service.impl.VoucherServiceImpl;
 import com.ccms.vo.AppRspObject;
 import com.ccms.vo.EcsuserUserAddrsVo;
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +52,7 @@ public class VoucherController {
      * 券码兑换
      * @return
      */
-    @RequestLimit(count=3,time=60000)
+//    @RequestLimit(count=3,time=60000)
     @PostMapping("/useCode")
     public AppRspObject useCode(@RequestParam String code, @RequestParam Long userId){
 
@@ -137,24 +138,39 @@ public class VoucherController {
             EcVoucherDetail vcd = ecVoucherCodeDetailMapper.selectOneByExample(vcdExample);
 
 
-            if(vcd != null && VoucherEnum.CODE_STATUS_USED.getValue().equals(vcd.getStatus())) {
+            if(vcd != null) {
 
-                ecsuserUserAddrsMapper.insert(addrObj);
-                //saveaddr
-                EcVoucherAddress va = new EcVoucherAddress();
-                va.setAddrId(Long.valueOf(addrObj.getAddrId()));
-                va.setVoucherCode(vcd.getVoucherCode());
-                va.setCreateDate(DateTime.now().toDate());
-                va.setUpdateDate(DateTime.now().toDate());
-                ecVoucherAddressMapper.insert(va);
+                //存在地址&&没有物流号   就修改否则新增
+                EcsuserUserAddrs oldAddress = ecsuserUserAddrsMapper.selectAddrByCode(code);
+                if(null == oldAddress){
+                    ecsuserUserAddrsMapper.insert(addrObj);
+                    //saveaddr
+                    EcVoucherAddress va = new EcVoucherAddress();
+                    va.setAddrId(Long.valueOf(addrObj.getAddrId()));
+                    va.setVoucherCode(vcd.getVoucherCode());
+                    va.setCreateDate(DateTime.now().toDate());
+                    va.setUpdateDate(DateTime.now().toDate());
+                    ecVoucherAddressMapper.insert(va);
 
-                //status = CODE_STATUS_USED
-                vcd.setStatus(VoucherEnum.CODE_STATUS_USED_ADDR.getValue());
-                ecVoucherCodeDetailMapper.updateByPrimaryKeySelective(vcd);
+                    //status = CODE_STATUS_USED
+                    vcd.setStatus(VoucherEnum.CODE_STATUS_USED_ADDR.getValue());
+                    ecVoucherCodeDetailMapper.updateByPrimaryKeySelective(vcd);
 
-                result = AppRspObject.createSuccRsp(null);
+                    result = AppRspObject.createSuccRsp(null);
+                }else{
+                    Example vaExample = new Example(EcVoucherAddress.class);
+                    vaExample.createCriteria().andEqualTo("voucherCode", vcd.getVoucherCode());
+                    EcVoucherAddress va = ecVoucherAddressMapper.selectOneByExample(vaExample);
+                    if(va != null && StringUtils.isNotEmpty(va.getLogicNo())){
+                        result = AppRspObject.createFailRsp(Errors.ERROR_VOUCHER_CANNOT_CHANGE_ADDR, "已发货，无法修改地址");
+                    }else {
+                        addrObj.setAddrId(oldAddress.getAddrId());
+                        ecsuserUserAddrsMapper.updateByPrimaryKey(addrObj);
+                    }
+
+                }
             }else{
-                result = AppRspObject.createFailRsp(Errors.ERROR_VOUCHER_USED_ADDR, VoucherServiceImpl.ERRORS_ARR[8]);
+                result = AppRspObject.createFailRsp(Errors.ERROR_VOUCHER_NOT_FOUND, VoucherServiceImpl.ERRORS_ARR[0]);
             }
             break;
         }

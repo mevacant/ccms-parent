@@ -31,7 +31,7 @@
                              type="XMLMAPPER"/>
 
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table tableName="ec_page_templete_property" domainObjectName="EcPageTempleteProperty" enableCountByExample="false"
+        <table tableName="sys_dict_data" domainObjectName="SysDictData" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <!--mysql 配置 -->

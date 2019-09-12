@@ -11,10 +11,14 @@
 
 <link rel="stylesheet" href="${basePath}/css/main.css">
 
-<title>活动</title>
+<title>乔馥</title>
 <script type="text/javascript">
 	$(document).ready(function(){
 		//alert($("#codeInput").offset().top);
+		var top = $("#codeInput").offset().top;
+		$("#fixedQueryBtn").css("top",top);
+
+
 		// var height = $("#index1img").height();
 		// console.log(height);
 		// $("#formBox").css("margin-top",height-40);
@@ -24,12 +28,18 @@
 
 	function useCode(){
 		var code = $("#codeInput").val();
+        var errorDom = $("#errorDom");
+
+        clearError(errorDom);
 		//console.log(code);
 		if(code == ""){
-			var errorDom = $("#errorDom");
-			showError(errorDom, "请输入券码");
+			showError(errorDom, "券码不能为空哦");
 			return;
 		}
+        if(code.length != 13){
+            showError(errorDom, "请输入13位券码哦");
+            return;
+        }
 
 		var param = {
 		    code : code,
@@ -37,15 +47,25 @@
 		}
 		
 		invoke("/voucher/useCode",param, function(res){
-			//alert(JSON.stringify(res));
-			if(res != null && "1" == res.success){
-			    //兑换成功
-                window.location.href='/pages/addrForm?code='+code;
-			}else{
-			    //兑换失败
+
+            if(res != null && "1" == res.success){
+                //兑换成功
+                pageOpen("/pages/addrForm?code="+code);
+            }else if(res != null && "4007" == res.error.code){
+                //4007.券码已被领取/兑换 还未填写收货地址
+                pageOpen("/pages/addrForm?code="+code);
+            }else if(res != null && "4011" == res.error.code){
+                //4011.券码已被领取/兑换 已经填写收货地址
+                pageOpen("/pages/showAddr?code="+code);
+            }
+            else{
+                //兑换失败
                 $("#codeInput").val("");
                 showError($("#errorDom"), res.error.message);
-			}
+            }
+
+
+
 		});
 	}
 	
@@ -60,7 +80,7 @@
 		<div class="col-xs-12 col-md-offset-4 col-md-4" style="background:#DDDED5;text-align:center;padding-top:30px;padding-bottom: 50px;">
 			<div id="whiteBox" style="background:#fff;padding:17px;">
 				<img id="index1img" width="100%" class="center-block" src="/img/voucher/index1-1.png"/>
-				<div style="position:absolute;top:67px;left:0;right:0;margin: auto;">
+				<div style="position:absolute;top:47px;left:0;right:0;margin: auto;">
                     <img id="index1img" width="100%" class="center-block" src="/img/voucher/index1-2.png"/>
 				</div>
                 <div id="formBox" style="margin-top: 30px;font-size: 16px;">
@@ -82,7 +102,7 @@
 						<div class="row" style="margin:10px 0;">
 							<div class="col-xs-4"></div>
 							<div class="col-xs-8" style="text-align: left">
-							<span id="errorDom" class="errorSpan" >错误提示
+							<span id="errorDom" class="errorSpan" >未知错误
 							</span>
 							</div>
 						</div>
@@ -100,7 +120,7 @@
 	</div>
 </div>
 
-<div class="" style="z-index:999;position:fixed;right:0;top:227px;text-align:center;line-height:12px;color:fff;width:82px;">
+<div id="fixedQueryBtn" onclick="pageOpen('/pages/queryGift')" style="z-index:999;position:fixed;right:0;top:227px;text-align:center;line-height:12px;color:fff;width:82px;">
 	<#--<div>查询</div>-->
 	<#--<div>礼物</div>-->
 	<img width="100%" src="/img/voucher/fix_btn.png">

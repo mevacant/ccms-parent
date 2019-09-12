@@ -16,7 +16,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<title>保存地址</title>
+<title>乔馥</title>
 <style type="text/css">
     .col-xs-3 {
         text-align: left;
@@ -48,37 +48,36 @@
 		initSelect();
 	});
 
-	var code = "A2019010110123"
 
 	function saveAddr(){
 
-        $('#myModal').modal({
-            show:true
-        })
+        // $('#myModal').modal({
+        //     show:true
+        // })
+        var errorDom = $("#errorDom");
+        clearError(errorDom);
 
-
-		/*
         var realname = $("#realnameInput").val();
         var mobile = $("#mobileInput").val();
         var area = $("#areaInput").val();
         var address = $("#addressInput").val();
         var address2 = $("#addressInput2").val();
 
-        var errorDom = $("#errorDom");
+
         if(realname == ""){
-            showError(errorDom, "请输入收货人姓名");
+            showError(errorDom, "姓名不能为空哦");
             return;
         }
         if(mobile == ""){
-            showError(errorDom, "请输入手机号");
+            showError(errorDom, "手机号不能为空哦");
             return;
         }
         if(area == ""){
-            showError(errorDom, "请输入所在地区");
+            showError(errorDom, "请选择省/区/市");
             return;
         }
         if(address == ""){
-            showError(errorDom, "请输入详细地址");
+            showError(errorDom, "地址不能为空哦");
             return;
         }
 
@@ -99,17 +98,23 @@
                 	show:true
                 })
             }else{
-                //兑换失败
-                // $("#codeInput").val("");
-                // showError($("#errorDom"), res.error.message);
-                alert(res.error.message);
+                showError($("#errorDom"), res.error.message);
+                //alert(res.error.message);
             }
         },"json");
 
-		*/
 
 
 	}
+
+
+    function closeModal(){
+        $('#myModal').modal({
+            show:false
+        });
+
+        pageOpen("/pages/index");
+    }
 
 	function initSelect(){
 
@@ -151,7 +156,7 @@
 
 
 </head>
-<body style="">
+<body style="background:#DDDED5">
 
 	<div class="container-fluid clear-padding header" style="z-index: 999;">
 		<div class="row" style="padding:0 15px 0 15px;">
@@ -172,10 +177,10 @@
             <img style="width: 115px;height: 135px" src="/img/voucher/form_gift.png">
         </div>
 		<div class="row" style="">
-			<div class="col-xs-12 col-md-offset-4 col-md-4" style="text-align:center;background:#DDDED5;">
+			<div class="col-xs-12 col-md-offset-4 col-md-4" style="text-align:center;">
 				<div style="position:relative;background:#fff;margin-top:40px;padding: 10px 10px;">
-					<div style="width: 100%;height: auto;border: 1px #D39F6A solid;">
-						<p style="color:red;margin-top:50px;">请填写真实有效的信息，以防止出现收获异常</p>
+					<div style="width: 100%;height: auto;border: 1px #f2e2d2 solid;">
+						<p style="color:red;margin-top:50px;">请填写真实有效的信息，以防止出现收货异常</p>
 						<form id="addrForm" class="form-horizontal" style="padding:20px 0 20px 15px;">
 							<#--<div class="form-group">-->
 								<#--<label style="text-align:left;" for="realnameInput" class="col-xs-3 control-label">姓名</label>-->
@@ -186,7 +191,7 @@
                             <div class="row" style="font-size: 16px;margin: 10px 0px;">
                                 <div class="col-xs-3 clear-padding-col" style="">姓名</div>
                                 <div class="col-xs-9" style="text-align: left">
-                                    <input style="height: 40px;width:100%;" type="text" class="line-input" id="realnameInput" name="name" placeholder="收货人">
+                                    <input style="height: 40px;width:100%;" value="${(addrObj.name)!''}" type="text" class="line-input" id="realnameInput" name="name" placeholder="请输入收货人姓名">
                                 </div>
                             </div>
 
@@ -199,7 +204,7 @@
 							<div class="row" style="font-size: 16px;margin: 10px 0px;">
 								<div class="col-xs-3 clear-padding-col" style="">手机号</div>
 								<div class="col-xs-9" style="text-align: left">
-									<input style="height: 40px;width:100%;" type="text" class="line-input" id="mobileInput" name="mobile" placeholder="11位手机号">
+									<input style="height: 40px;width:100%;" value="${(addrObj.mobile)!''}" type="text" class="line-input" id="mobileInput" name="mobile" placeholder="请输入11位手机号">
 								</div>
 							</div>
 
@@ -217,7 +222,7 @@
 							<div class="row" style="font-size: 16px;margin: 10px 0px;">
 								<div class="col-xs-3 clear-padding-col" style="">所在地区</div>
 								<div class="col-xs-9" style="text-align: left;position: relative">
-									<input style="height: 40px;width:100%;background:#fff;padding-right: 30px;" readonly type="text" class="line-input" id="areaInput" name="area" placeholder="" maxlength="10">
+									<input style="height: 40px;width:100%;background:#fff;padding-right: 30px;" value="${(addrObj.area)!''}" readonly type="text" class="line-input" id="areaInput" name="area" placeholder="" maxlength="10">
 									<div style="position: absolute;top:8px;right: 20px">
 										<img style="width: 16px;height: 19px;" src="/img/voucher/icon_map.png">
 									</div>
@@ -236,7 +241,7 @@
 							<div class="row" style="font-size: 16px;margin: 10px 0px;">
 								<div class="col-xs-3 clear-padding-col" style="">详细地址</div>
 								<div class="col-xs-9" style="text-align: left">
-									<input style="height: 40px;width:100%;" type="text" class="line-input" id="addressInput" name="address" placeholder="如道路、小区/大厦/学校">
+									<input style="height: 40px;width:100%;" value="${(addrObj.addr)!''}" type="text" class="line-input" id="addressInput" name="address" placeholder="如道路、小区/大厦/学校">
 								</div>
 							</div>
 							<#--<div class="form-group">-->
@@ -253,8 +258,7 @@
 
 
 
-
-							<p id="errorDom" class="errorSpan" style="">错误提示</p>
+							<span id="errorDom" class="errorSpan" >未知错误</span>
 
 						</form>
                     </div>
@@ -264,7 +268,7 @@
                 <br/>
                 <br/>
                 <div style="text-align:center">
-                    <button style="" class="btn btn-default orange-btn-submit"  type="submit" onclick="saveAddr();"></button>
+                    <button style="" class="orange-btn-submit"  type="submit" onclick="saveAddr();"></button>
                 </div>
 
 				<br><br><br><br>
@@ -294,7 +298,7 @@
 	      	<br/>
 			<div class="modal-absolute">
                 <#--<button style="padding:8px 50px;" class="btn orange-btn"  type="submit" onclick="saveAddr();" data-dismiss="modal">朕知道了</button>-->
-                <button style="" class="btn-no-border orange-btn-know"  type="button" onclick="saveAddr();" data-dismiss="modal"></button>
+                <button style="" class="btn-no-border orange-btn-know"  type="button" onclick="closeModal()"></button>
 			</div>
 	      </div>
 	      <!-- <div class="modal-footer" style="text-align:center;">

@@ -42,7 +42,7 @@ public class VoucherServiceImpl implements VoucherService {
     private static final String PACKAGE_CODE_MAP = "package_code_map";
     private static final String USE_CODE_LOCK = "use_code_lock:";
     public static final String[] ERRORS_ARR = new String[]{
-        "无效兑换码",
+        "券码有误，请重新输入哦",
         "兑换码已过期",
         "兑换码输入为空",
         "兑换码已被冻结，暂无法兑换",

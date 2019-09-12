@@ -21,7 +21,11 @@ function showError(dom,msg){
     }else{
         dom.text("未知错误");
     }
+}
 
+function clearError(dom){
+    dom.css("visibility","");
+    dom.text("");
 }
 
 // function invoke(path,param,callback){
@@ -31,6 +35,7 @@ function showError(dom,msg){
 
 function invoke(path,param,callback,contentType){
     var serverUrl = "http://127.0.0.1:8003";
+    // var serverUrl = "https://activity.qiaofu.shop";
     var url = serverUrl + path
     if("json" == contentType){
         contentType = "application/json; charset=utf-8";
@@ -52,7 +57,8 @@ function invoke(path,param,callback,contentType){
         },
         error: function(err){
             console.log(JSON.stringify(err));
-            alert("请求失败，稍后再试");
+            //alert("请求失败，稍后再试");
+            showError($("#errorDom"), "当前网络不能用，请检查网络");
         },
         complete: function (res) {
             console.log("reponse url:%s,res:%s",url,JSON.stringify(res));
@@ -62,6 +68,12 @@ function invoke(path,param,callback,contentType){
 }
 
 function pageBack() {
+    window.history.back(-1);
+    // window.location.go(-1);
+    // window.location.href=document.referrer;
+}
+
+function pageOpen(url) {
     //window.history.back(-1);
-    window.location.go(-1);
+    window.location = url;
 }

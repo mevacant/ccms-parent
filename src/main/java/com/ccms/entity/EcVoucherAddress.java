@@ -9,6 +9,12 @@ public class EcVoucherAddress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "logic_no")
+    private String logicNo;
+
+    @Column(name = "logic_type")
+    private String logicType;
+
     @Column(name = "voucher_code")
     private String voucherCode;
 
@@ -89,5 +95,21 @@ public class EcVoucherAddress {
      */
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public String getLogicNo() {
+        return logicNo;
+    }
+
+    public void setLogicNo(String logicNo) {
+        this.logicNo = logicNo;
+    }
+
+    public String getLogicType() {
+        return logicType;
+    }
+
+    public void setLogicType(String logicType) {
+        this.logicType = logicType;
     }
 }

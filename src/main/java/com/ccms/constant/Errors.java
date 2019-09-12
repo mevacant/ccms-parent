@@ -72,6 +72,7 @@ public class Errors {
 	public static final String ERROR_VOUCHER_PACKAGE_MAX = "4009"; //4009.已超过券码包实际兑换人数
 //	public static final String ERROR_VOUCHER_SUCCESS = "4010"; //4010.兑换成功
 	public static final String ERROR_VOUCHER_USED_ADDR = "4011"; //4011.券码已被领取/兑换 已经填写收货地址
+	public static final String ERROR_VOUCHER_CANNOT_CHANGE_ADDR = "4012"; //4012.已发货 不能修改地址
 	public static final String ERROR_VOUCHER_EXCHANGE_FAIL = "4099"; //4011.其它)
 
 	/**
