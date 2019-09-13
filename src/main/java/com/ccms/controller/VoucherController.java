@@ -171,7 +171,7 @@ public class VoucherController {
 
                     vcd.setMobile(addrObj.getMobile());
                     ecVoucherCodeDetailMapper.updateByPrimaryKeySelective(vcd);
-
+                    result = AppRspObject.createSuccRsp("修改成功");
                 }
             }else{
                 result = AppRspObject.createFailRsp(Errors.ERROR_VOUCHER_NOT_FOUND, VoucherServiceImpl.ERRORS_ARR[0]);

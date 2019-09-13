@@ -2,6 +2,37 @@ body {
 	font-family: "PingFang-SC-Medium","Microsoft YaHei","Arial","黑体","宋体",sans-serif;
 }
 
+input::-webkit-input-placeholder{
+	color:#cccccc;
+}
+input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+	color:#cccccc;
+}
+input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+	color:#cccccc;
+}
+input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+	color:#cccccc;
+}
+
+
+textarea::-webkit-input-placeholder {
+	/* WebKit browsers */
+	color: #cccccc;
+}
+textarea:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #cccccc;
+}
+textarea::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #cccccc;
+}
+textarea::-ms-input-placeholder {
+	/* Internet Explorer 10+ */
+	color: #cccccc;
+}
+
 .clear-padding{
     padding-left:0;
     padding-right:0;
@@ -117,7 +148,7 @@ body {
 .line-input{
 	outline-style: none;
 	border: 0;
-	border-bottom: 1px #CCCCCC solid;
+	border-bottom: 1px #dddddd solid;
 	border-radius:0;
 	-web-kit-appearance:none;
 	-moz-appearance: none;

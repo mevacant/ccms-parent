@@ -61,7 +61,7 @@
         var mobile = $("#mobileInput").val();
         var area = $("#areaInput").val();
         var address = $("#addressInput").val();
-        var address2 = $("#addressInput2").val();
+        //var address2 = $("#addressInput2").val();
 
 
         if(realname == ""){
@@ -86,17 +86,28 @@
         var form = $("#addrForm").serializeObject();
         console.log("form:"+ JSON.stringify(form));
 
-        form.addr = address+address2;
+        form.addr = address;//+address2;
 
 
         invoke("/voucher/saveAddress",form, function(res){
             //alert(JSON.stringify(res));
             if(res != null && "1" == res.success){
-                //兑换成功
-                //显示模态窗口
-                $('#myModal').modal({
-                	show:true
-                })
+
+                if(res.data){
+                    //地址修改成功
+                    //兑换成功
+                    //显示模态窗口
+                    $('#myModalChange').modal({
+                        show:true
+                    })
+				}else {
+                    //兑换成功
+                    //显示模态窗口
+                    $('#myModal').modal({
+                        show:true
+                    })
+				}
+
             }else{
                 showError($("#errorDom"), res.error.message);
                 //alert(res.error.message);
@@ -238,22 +249,24 @@
 									<#--<input style="" type="text" class="form-control" id="addressInput" name="address" placeholder="如道路、小区/大厦/学校">-->
 								<#--</div>-->
 							<#--</div>-->
-							<div class="row" style="font-size: 16px;margin: 10px 0px;">
-								<div class="col-xs-3 clear-padding-col" style="">详细地址</div>
-								<div class="col-xs-9" style="text-align: left">
-									<input style="height: 40px;width:100%;" value="${(addrObj.addr)!''}" type="text" class="line-input" id="addressInput" name="address" placeholder="如道路、小区/大厦/学校">
-								</div>
-							</div>
-							<#--<div class="form-group">-->
-								<#--<div class="col-xs-12">-->
-									<#--<input style="" type="text" class="form-control" id="addressInput2" name="address2" placeholder="楼号/门牌号等">-->
+							<#--<div class="row" style="font-size: 16px;margin: 10px 0px;">-->
+								<#--<div class="col-xs-3 clear-padding-col" style="">详细地址</div>-->
+								<#--<div class="col-xs-9" style="text-align: left">-->
+									<#--<input style="height: 40px;width:100%;" value="${(addrObj.addr)!''}" type="text" class="line-input" id="addressInput" name="address" placeholder="如道路、小区/大厦/学校">-->
 								<#--</div>-->
 							<#--</div>-->
 							<div class="row" style="font-size: 16px;margin: 10px 0px;">
-								<div class="col-xs-12 clear-padding-col" style="text-align: left;padding-right: 15px;">
-									<input style="height: 40px;width:100%;" type="text" class="line-input" id="addressInput2" name="address2" placeholder="楼号/门牌号等">
+								<div class="col-xs-3 clear-padding-col" style="">详细地址</div>
+								<div class="col-xs-9" style="text-align: left">
+									<textarea rows="2" style="line-height: 40px;width:100%;" value="${(addrObj.addr)!''}" type="text" class="line-input" id="addressInput" name="address" placeholder="请输入街道/小区/大厦，及门牌号等"></textarea>
 								</div>
 							</div>
+
+							<#--<div class="row" style="font-size: 16px;margin: 10px 0px;">-->
+								<#--<div class="col-xs-12 clear-padding-col" style="text-align: left;padding-right: 15px;">-->
+									<#--<input style="height: 40px;width:100%;" type="text" class="line-input" id="addressInput2" name="address2" placeholder="">-->
+								<#--</div>-->
+							<#--</div>-->
 
 
 
@@ -280,7 +293,7 @@
 
 
 
-	<!-- Modal -->
+	<!-- Modal 成功兑换 第一次提交地址-->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog modal-sm" role="document">
 	    <div class="modal-content modal-content-no-border">
@@ -292,7 +305,7 @@
 	      	<img width="100%" class="center-block" src="${p3!''}"/>
 	      	<br/>
 	      	<p>
-	      		<h4><strong>恭喜您，兑换成功</strong></h4>
+	      		<h4><strong id="successText">恭喜您，兑换成功</strong></h4>
 	      		预计3-5天能收货，请注意查收
 	      	</p>
 	      	<br/>
@@ -307,6 +320,41 @@
 	    </div>
 	  </div>
 	</div>
+
+
+    <!-- Modal 修改成功 地址修改-->
+    <div class="modal fade" id="myModalChange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content modal-content-no-border">
+                <!-- <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div> -->
+                <div style="position: absolute;top:-66px;right: 0;margin: auto;">
+                    <img style="width: 48%;" src="/img/voucher/gift2_pop.png">
+                </div>
+
+                <div class="modal-body" style="text-align:center;font-size: 16px;font-weight: bold;padding: 60px 0 23px 0">
+                    <!-- <img width="100%" class="center-block" src="img/timg.jpg"/> -->
+                    <p>
+                        地址修改成功，预计3-5天
+                    </p>
+                    <p>
+                        能收货，请注意查收
+                    </p>
+                    <br/>
+				<#--<button style="padding:8px 50px;" class="btn btn-default orange-btn"  type="submit" onclick="saveAddr();" data-dismiss="modal">朕知道了</button>-->
+                    <div class="modal-absolute">
+                        <button style="" class="btn-no-border orange-btn-know"  type="button" onclick="closeModal();" data-dismiss="modal"></button>
+                    </div>
+
+                </div>
+                <!-- <div class="modal-footer" style="text-align:center;">
+
+                </div> -->
+            </div>
+        </div>
+    </div>
 
 
 </body>
