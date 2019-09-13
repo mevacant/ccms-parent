@@ -1,5 +1,6 @@
 package com.ccms.controller;
 
+import com.ccms.entity.EcPageTempleteProperty;
 import com.ccms.entity.EcVoucherAddress;
 import com.ccms.entity.EcsuserUserAddrs;
 import com.ccms.entity.SysDictData;
@@ -9,6 +10,7 @@ import com.ccms.mapper.EcsuserUserAddrsMapper;
 import com.ccms.mapper.SysDictDataMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,9 @@ public class PageController {
     private EcVoucherAddressMapper ecVoucherAddressMapper;
     @Resource
     private SysDictDataMapper sysDictDataMapper;
+
+    @Value("${ftp.server.url}")
+    private String ftpServerUrl;
 
     @RequestMapping(value = "/test")
     public String test(ModelMap model) {
@@ -57,10 +62,16 @@ public class PageController {
 
     @RequestMapping(value = "/index")
     public String index(ModelMap model) {
-//        List<EcPageTempleteProperty> list = ecPageTempletePropertyMapper.selelctEnablePageTempletePropertyList();
-//        for(EcPageTempleteProperty p : list){
-//            model.addAttribute(p.getName(),p.getValue());
-//        }
+        //0首页海报,1首页产品展示，2背景色,,3展示小图,4海报悬浮物
+        List<EcPageTempleteProperty> list = ecPageTempletePropertyMapper.selelctEnablePageTempletePropertyList();
+        for(EcPageTempleteProperty p : list){
+            if(!"2".equals(p.getType())){
+                model.addAttribute("p"+p.getType(),ftpServerUrl+p.getValue());
+            }else{
+                model.addAttribute("p"+p.getType(),p.getValue());
+            }
+
+        }
 
 
         return "/voucher/index";
@@ -68,6 +79,17 @@ public class PageController {
 
     @RequestMapping(value = "/addrForm")
     public String addrForm(ModelMap model, String code) {
+        //0首页海报,1首页产品展示，2背景色,,3展示小图,4海报悬浮物
+        List<EcPageTempleteProperty> list = ecPageTempletePropertyMapper.selelctEnablePageTempletePropertyList();
+        for(EcPageTempleteProperty p : list){
+            if(!"2".equals(p.getType())){
+                model.addAttribute("p"+p.getType(),ftpServerUrl+p.getValue());
+            }else{
+                model.addAttribute("p"+p.getType(),p.getValue());
+            }
+
+        }
+
 
         EcsuserUserAddrs addr = new EcsuserUserAddrs();
         addr = ecsuserUserAddrsMapper.selectAddrByCode(code);

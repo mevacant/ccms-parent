@@ -77,11 +77,11 @@
 
 <div class="container-fluid" style="">
 	<div class="row" style="">
-		<div class="col-xs-12 col-md-offset-4 col-md-4" style="background:#DDDED5;text-align:center;padding-top:30px;padding-bottom: 50px;">
+		<div class="col-xs-12 col-md-offset-4 col-md-4" style="background:${p2!''};text-align:center;padding-top:30px;padding-bottom: 50px;">
 			<div id="whiteBox" style="background:#fff;padding:17px;">
-				<img id="index1img" width="100%" class="center-block" src="/img/voucher/index1-1.png"/>
+				<img id="index1img" width="100%" class="center-block" src="${p0!''}"/>
 				<div style="position:absolute;top:47px;left:0;right:0;margin: auto;">
-                    <img id="index1img" width="100%" class="center-block" src="/img/voucher/index1-2.png"/>
+                    <img id="index1img" width="100%" class="center-block" src="${p4!''}"/>
 				</div>
                 <div id="formBox" style="margin-top: 30px;font-size: 16px;">
                     <form class="form-horizontal" style="">
@@ -134,14 +134,14 @@
 <div class="container-fluid" style="">
 	<div class="row" style="">
 		<div class="col-xs-12 col-md-offset-4 col-md-4" style="">
-			<img width="100%" class="center-block" src="/img/voucher/index2.png"/>
+			<img width="100%" class="center-block" src="${p1!''}"/>
 		</div>
 	</div>
 </div>
 
 <br/>
 <div style="width:100%;text-align:center">
-	<a class="lighten" style="color:black;text-decoration:underline;font-size: 13px;">查看店铺</a>
+	<a href="https://shop42974131.youzan.com/v2/showcase/homepage?alias=0JZkDNhaiw&sf=wx_menu&scene=126" class="lighten" style="color:black;text-decoration:underline;font-size: 13px;">查看店铺</a>
 </div>
 
 <br/><br/><br/><br/><br/>

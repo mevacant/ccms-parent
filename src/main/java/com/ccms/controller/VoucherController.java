@@ -154,6 +154,7 @@ public class VoucherController {
 
                     //status = CODE_STATUS_USED
                     vcd.setStatus(VoucherEnum.CODE_STATUS_USED_ADDR.getValue());
+                    vcd.setMobile(addrObj.getMobile());
                     ecVoucherCodeDetailMapper.updateByPrimaryKeySelective(vcd);
 
                     result = AppRspObject.createSuccRsp(null);
@@ -167,6 +168,9 @@ public class VoucherController {
                         addrObj.setAddrId(oldAddress.getAddrId());
                         ecsuserUserAddrsMapper.updateByPrimaryKey(addrObj);
                     }
+
+                    vcd.setMobile(addrObj.getMobile());
+                    ecVoucherCodeDetailMapper.updateByPrimaryKeySelective(vcd);
 
                 }
             }else{

@@ -34,8 +34,9 @@ function clearError(dom){
 
 
 function invoke(path,param,callback,contentType){
-    var serverUrl = "http://127.0.0.1:8003";
+    // var serverUrl = "http://127.0.0.1:8003";
     // var serverUrl = "https://activity.qiaofu.shop";
+    var serverUrl = "";
     var url = serverUrl + path
     if("json" == contentType){
         contentType = "application/json; charset=utf-8";

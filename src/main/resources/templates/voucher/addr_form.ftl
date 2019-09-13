@@ -204,7 +204,7 @@
 							<div class="row" style="font-size: 16px;margin: 10px 0px;">
 								<div class="col-xs-3 clear-padding-col" style="">手机号</div>
 								<div class="col-xs-9" style="text-align: left">
-									<input style="height: 40px;width:100%;" value="${(addrObj.mobile)!''}" type="text" class="line-input" id="mobileInput" name="mobile" placeholder="请输入11位手机号">
+									<input style="height: 40px;width:100%;" value="${(addrObj.mobile)!''}" type="text" class="line-input" id="mobileInput" name="mobile" placeholder="请输入11位手机号" maxlength="11">
 								</div>
 							</div>
 
@@ -289,7 +289,7 @@
 	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
 	      </div> -->
 	      <div class="modal-body" style="text-align:center;padding-bottom: 23.3px;">
-	      	<img width="100%" class="center-block" src="/img/voucher/success_gif.png"/>
+	      	<img width="100%" class="center-block" src="${p3!''}"/>
 	      	<br/>
 	      	<p>
 	      		<h4><strong>恭喜您，兑换成功</strong></h4>
