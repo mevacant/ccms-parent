@@ -78,3 +78,8 @@ function pageOpen(url) {
     //window.history.back(-1);
     window.location = url;
 }
+
+//手机号码校验
+function isMobile(){
+    return /^1[3456789]\d{9}$/.test(phone);
+}

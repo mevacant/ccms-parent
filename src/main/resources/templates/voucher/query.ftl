@@ -156,7 +156,7 @@
                             <div class="row" style="font-size: 16px;">
                                 <div class="col-xs-4" style="text-align: right;font-size: 16px;font-weight: bold;line-height: 40px;">券码</div>
                                 <div class="col-xs-8" style="text-align: left">
-                                    <input style="width:150px;height: 40px;background: transparent;" type="text" class="line-input" id="codeInput" name="code" placeholder="请输入13位券码">
+                                    <input οnkeyup="this.value=this.value.replace(/[^\w_]/g,'');" style="width:150px;height: 40px;background: transparent;" type="text" class="line-input" id="codeInput" name="code" placeholder="请输入13位券码">
                                 </div>
                             </div>
 
