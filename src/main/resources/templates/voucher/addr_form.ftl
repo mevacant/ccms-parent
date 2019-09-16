@@ -72,6 +72,11 @@
             showError(errorDom, "手机号不能为空哦");
             return;
         }
+        if(!isMobile(mobile)){
+            showError(errorDom, "请输入正确的手机号哦");
+            return;
+        }
+
         if(area == ""){
             showError(errorDom, "请选择省/区/市");
             return;

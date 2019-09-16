@@ -80,6 +80,6 @@ function pageOpen(url) {
 }
 
 //手机号码校验
-function isMobile(){
+function isMobile(phone){
     return /^1[3456789]\d{9}$/.test(phone);
 }
