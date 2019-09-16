@@ -59,7 +59,7 @@ function invoke(path,param,callback,contentType){
         error: function(err){
             console.log(JSON.stringify(err));
             //alert("请求失败，稍后再试");
-            showError($("#errorDom"), "当前网络不能用，请检查网络");
+            showError($("#errorDom"), "网络异常，请检查网络");
         },
         complete: function (res) {
             console.log("reponse url:%s,res:%s",url,JSON.stringify(res));
@@ -77,4 +77,9 @@ function pageBack() {
 function pageOpen(url) {
     //window.history.back(-1);
     window.location = url;
+}
+
+//手机号码校验
+function isMobile(){
+    return /^1[3456789]\d{9}$/.test(phone);
 }
