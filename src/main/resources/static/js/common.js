@@ -59,7 +59,7 @@ function invoke(path,param,callback,contentType){
         error: function(err){
             console.log(JSON.stringify(err));
             //alert("请求失败，稍后再试");
-            showError($("#errorDom"), "当前网络不能用，请检查网络");
+            showError($("#errorDom"), "网络异常，请检查网络");
         },
         complete: function (res) {
             console.log("reponse url:%s,res:%s",url,JSON.stringify(res));
