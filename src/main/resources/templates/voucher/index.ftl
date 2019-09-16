@@ -133,7 +133,7 @@
 
 <div class="container-fluid" style="">
 	<div class="row" style="">
-		<div class="col-xs-12 col-md-offset-4 col-md-4" style="">
+		<div class="col-xs-12 col-md-offset-4 col-md-4 clear-padding-col" style="">
 			<img width="100%" class="center-block" src="${p1!''}"/>
 		</div>
 	</div>

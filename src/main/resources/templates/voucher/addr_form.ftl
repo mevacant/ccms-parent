@@ -258,7 +258,7 @@
 							<div class="row" style="font-size: 16px;margin: 10px 0px;">
 								<div class="col-xs-3 clear-padding-col" style="">详细地址</div>
 								<div class="col-xs-9" style="text-align: left">
-									<textarea rows="2" style="line-height: 40px;width:100%;" value="${(addrObj.addr)!''}" type="text" class="line-input" id="addressInput" name="address" placeholder="请输入街道/小区/大厦，及门牌号等"></textarea>
+									<textarea rows="2" style="line-height: 40px;width:100%;" value="" type="text" class="line-input" id="addressInput" name="address" placeholder="请输入街道/小区/大厦，及门牌号等">${(addrObj.addr)!''}</textarea>
 								</div>
 							</div>
 
