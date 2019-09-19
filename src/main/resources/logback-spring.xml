@@ -20,12 +20,14 @@
 		<encoder>
 			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
 		</encoder>
+		<!-- 此日志文件只记录info级别的 -->
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>info</level>
-			<onMatch>DENY</onMatch>
-			<onMismatch>ACCEPT</onMismatch>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
 		</filter>
 	</appender>
+
 	<appender name="errorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${logPath}/${serverName}.error.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -38,11 +40,14 @@
 		<encoder>
 			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
 		</encoder>
-		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>ERROR</level>
+		<!-- 此日志文件只记录error级别的 -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>error</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
 		</filter>
 	</appender>
-	
+
 	<appender name="quartzLogAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${logPath}/quartzLog.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -50,17 +55,17 @@
 			<maxHistory>1825</maxHistory>
 			<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
     			<MaxFileSize>30MB</MaxFileSize>
-   			</TimeBasedFileNamingAndTriggeringPolicy> 
+   			</TimeBasedFileNamingAndTriggeringPolicy>
 		</rollingPolicy>
 		<encoder>
 			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
 		</encoder>
 	</appender>
-	
 
-	<logger name="com.ccms" level="INFO" />
+
+	<!--<logger name="com.ccms" level="INFO" />-->
 	<logger name="cm.netflix" level="INFO" />
-	<logger name="com.ccms" level="DEBUG"/>
+	<logger name="com.ccms" level="INFO"/>
 	<!-- show parameters for mybatis sql -->
 	<logger name="log4j.logger.com.ibatis" level="DEBUG" />
 	<logger name="log4j.logger.com.ibatis.common.jdbc.SimpleDataSource" level="DEBUG" />
@@ -73,13 +78,7 @@
 	<!-- spring log level -->
 	<logger name="org.springframework" level="INFO" />
 
-	<!--  项目 mapper 路径
-            console控制台显示sql语句：STDOUT.filter.level -> debug级别
-    -->
 
-	<logger name="quartzLog" level="DEBUG" additivity="false">
-		<appender-ref ref="quartzLogAppender" />
-	</logger>
 
 	<root level="INFO">
 		<appender-ref ref="console" />
@@ -87,7 +86,5 @@
 		<appender-ref ref="errorAppender" />
 	</root>
 
-	<!--<include resource="org/springframework/boot/logging/logback/base.xml"/>-->
-	<jmxConfigurator/>
 
 </configuration>
