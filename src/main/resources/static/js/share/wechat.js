@@ -20,16 +20,18 @@ var data = {
 
 // 获取配置参数
 $.ajax({
-    url: "/wechat/getAccess",
+    url: "/wx/getAccess",
     type: 'post',
     async: false ,
     dataType: 'json',
     data: { url: url},
     success: function(data){
-    	config.appId = data.paramsMap.appId;
-    	config.timestamp = data.paramsMap.timestamp;
-    	config.nonceStr = data.paramsMap.nonceStr;
-    	config.signature = data.paramsMap.signature;
+    	config.appId = data.data.appId;
+    	config.timestamp = data.data.timestamp;
+    	config.nonceStr = data.data.nonceStr;
+    	config.signature = data.data.signature;
+    	console.log(config)
+        console.log(config.appId)
     },
     error: function (XMLHttpRequest, textStatus, errorThrown) {
     	config = {};
@@ -87,6 +89,8 @@ wx.config({
 
 wx.ready(function () {
 	// 分享给朋友
+    console.log(12313213);
+
 	if (data.shareFriend != ''){
 		wx.onMenuShareAppMessage(data.shareFriend);
 	}

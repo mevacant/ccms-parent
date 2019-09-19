@@ -67,7 +67,7 @@
 						</#if>
 					</p>
 
-					<div style="position: absolute;bottom: 40px;right: 40px;font-size: 12px;color: #F18960;text-align: right;">
+					<div style="position: absolute;bottom: 40px;right: 40px;font-size: 12px;color: #F18960;text-align: right;line-height:2">
 						<#if logicNo??>
 							<div><img style="width: 79px" src="/img/voucher/btn_sended.png"></div>
 							<div>${logicType!''}: ${logicNo!''}</div>

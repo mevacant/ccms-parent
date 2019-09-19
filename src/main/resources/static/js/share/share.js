@@ -4,6 +4,9 @@
 var ShareWX = {
 	// 分享微信、QQ、微博
 	share : function(shareData){
+
+console.log('test');
+console.log(shareData);
 		// 分享给朋友
 		shareFriend(shareData);
 		// 分享到朋友圈
@@ -120,10 +123,10 @@ var ShareWX = {
 	// 老的MGM红包页分享
 	mgm : function(data){
 		var shareData =  {
-	        title: '好友邀请你一起来才米公社投资啦！新手礼包三重奏，还不快来抢！',
-	        desc: '注册还有一大波福利等你来拿哦！',
-	        link:  Utils.getUri() + '/mgm/register?invCode='+data.invCode+'&invMobile='+data.invMobile+'&activity='+data.activity,
-	        imgUrl: Utils.getImgUri() + '/img/mgm/m_share.png'
+	        title: '来自乔馥的一份心意',
+	        desc: '好松露，值得寻觅。快来兑换吧！',
+	        link:  'https://activity.qiaofu.shop/pages/index',
+	        imgUrl: 'https://activity.qiaofu.shop/images/userfiles/ecpimg/54062b5ad13749ae82a5be6f3fd29b8a.png'
 		}
 		this.share(shareData);
 	},
