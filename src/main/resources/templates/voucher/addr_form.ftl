@@ -311,7 +311,7 @@
 	      	<br/>
 	      	<p>
 	      		<h4><strong id="successText">恭喜您，兑换成功</strong></h4>
-	      		预计3-5天能收货，请注意查收
+	      		预计7天内能收货，请注意查收
 	      	</p>
 	      	<br/>
 			<div class="modal-absolute">

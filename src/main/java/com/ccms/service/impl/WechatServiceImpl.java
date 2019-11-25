@@ -101,12 +101,9 @@ public class WechatServiceImpl implements WechatService {
 
         tokenMap.put("ticket", ticket);
         tokenMap.put("token", token);
-        if(org.springframework.util.StringUtils.isEmpty(token)){
-            logger.info("token is null ");
-        }else{
-            RedisTemplateUtil.hSetAll("activity_wx_share_token_map", tokenMap );
-            RedisTemplateUtil.expire("RedisTemplateUtil",overduetime);
-        }
+
+        RedisTemplateUtil.hSetAll("activity_wx_share_token_map", tokenMap );
+        RedisTemplateUtil.expire("activity_wx_share_token_map",overduetime);
 
     }
 
